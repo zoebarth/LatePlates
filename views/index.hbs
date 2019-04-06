@@ -7,15 +7,19 @@
       <th scope="col">Currently Checked Out? </th>
       <th scope="col">Last Checked Out On</th>
       <th scope="col">Last Checked Out By</th>
+      <th scope="col">Last Checked In On</th>
+      <th scope="col">Last Checked In By</th>
     </tr>
   </thead>
   <tbody>
     {{#each items}}
       <tr>
         <td> <a href="/lateplate/{{this.id}}">{{this.number}}</a> </td>
-        <td>{{this.checkedOut}}</td>
+        <td>{{this.status}}</td>
+        <td>{{this.lastLenderDate}}</td>
+        <td>{{this.lastLenderName}}</td>
         <td></td>
-        <td></td>
+        <td> </td>
       </tr>
     {{/each}}
  </tbody>

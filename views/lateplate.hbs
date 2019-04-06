@@ -1,2 +1,24 @@
 <a href="/">< View All Late Plates</a>
-  <h1> Late Plate Number {{lateplate.number}} </h1>
+<h1> Late Plate Number {{lateplate.number}} </h1>
+<h3> Current Status: {{status}} </h3>
+<h5> Last Checked Out By: {{lastLender}} </h5>
+<h5> Last Returned By:  </h5>
+
+
+<h3> Previosuly Checked Out By: </h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"> Name </th>
+      <th scope="col"> Date Checked Out </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each lateplate.lenders}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.formattedDate}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</ul>

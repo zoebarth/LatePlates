@@ -8,8 +8,20 @@ const lender = new mongoose.Schema({
     type: String,
     required: true
   },
-  checkedOut: {
-    type: Boolean
+  date: {
+    type: Date,
+    default: Date.today
+  }
+});
+
+const returner = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.today
   }
 });
 
@@ -23,7 +35,8 @@ const LatePlate = mongoose.model("LatePlate", {
     type: Boolean,
     default: false
   },
-  lenders: [lender]
+  lenders: [lender],
+  returners: [returner]
 });
 
 module.exports = {

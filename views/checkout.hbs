@@ -1,0 +1,9 @@
+<h1> Check Out Late Plate {{lateplate.number}} </h1>
+<form action="/checkout/{{lateplate.id}}" method="POST">
+  Name:<br>
+  <input type="text" name="name"> <br>
+  <br>
+  <input type="submit" class="btn btn-success" value="Submit">
+</form>
+
+<h3> Current Status: {{status}} </h3>

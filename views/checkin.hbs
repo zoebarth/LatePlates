@@ -1,0 +1,21 @@
+<h1> Check In Late Plate </h1>
+<h5> Please only do this after you have cleaned your late plate and returned it to the bin. </h5>
+<br>
+
+{{#each errors}}
+  <li>{{this.message}}</li>
+{{/each}}
+
+<form action="/checkin" method="POST">
+  Name:<br>
+  <input type="text" name="name"> <br> <br>
+  Late Plate Number: <br>
+  <select name="number">
+    {{#each items}}
+      <option value={{this.number}}> {{this.number}} </option>
+    {{/each}}
+  </select>
+  <br>
+  <br>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
