@@ -1,0 +1,22 @@
+<h1 style= "text-align: center">View All Late Plates</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Late Plate Number </th>
+      <th scope="col">Currently Checked Out? </th>
+      <th scope="col">Last Checked Out On</th>
+      <th scope="col">Last Checked Out By</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+      <tr>
+        <td> <a href="/lateplate/{{this.id}}">{{this.number}}</a> </td>
+        <td>{{this.checkedOut}}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    {{/each}}
+ </tbody>
+</table>
