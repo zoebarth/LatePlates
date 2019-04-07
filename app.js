@@ -7,13 +7,11 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 
 // Initialize Express
 const app = express();
 
 // mongoose configuration
-<<<<<<< HEAD
 if (!fs.existsSync("./env.sh")) {
   throw new Error("env.sh file is missing");
 }
@@ -30,41 +28,6 @@ mongoose.connection.on("error", _ => {
   process.exit(1);
 });
 mongoose.connect(process.env.MONGODB_URI);
-=======
-// if (!fs.existsSync("./env.sh")) {
-//   throw new Error("env.sh file is missing");
-// }
-// if (!process.env.MONGODB_URI) {
-//   throw new Error(
-//     "MONGODB_URI is not in the environmental variables. Try running 'source env.sh'"
-//   );
-// }
-// mongoose.connection.on("connected", _ =>
-//   console.log("Success: connected to MongoDb!")
-// );
-// mongoose.connection.on("error", _ => {
-//   console.log("Error connecting to MongoDb. Check MONGODB_URI in env.sh");
-//   process.exit(1);
-// });
-// mongoose.connect(process.env.MONGODB_URI);
-
-const {User} = require("./models");
-const mongoose = require("mongoose");
-
-console.log("mongoose stuff intialized");
-
-app.use((req, res, next) => {
-  console.log("use for mongoose callback");
-  if (mongoose.connection.readyState) {
-    console.log("if (mongoose.connection.readyState)");
-    next();
-  } else {
-    console.log("else (mongoose.connection.readyState)");
-    require("./mongo")().then(() => next());
-    console.log("else (mongoose.connection.readyState)");
-  }
-});
->>>>>>> a26fecc797579b3130065c57867d0e0b5a401407
 
 // Handlabars setup
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
@@ -73,15 +36,13 @@ app.set("view engine", ".hbs");
 app.use(logger("dev"));
 
 // Parse req.body contents
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Read static files in /public
 app.use(express.static(path.join(__dirname, "public")));
 
-// All of our routes are in routes.js
+// All routes are in routes.js
 const routes = require("./routes");
 app.use("/", routes);
 
