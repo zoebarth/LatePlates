@@ -36,13 +36,15 @@ app.set("view engine", ".hbs");
 app.use(logger("dev"));
 
 // Parse req.body contents
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Read static files in /public
 app.use(express.static(path.join(__dirname, "public")));
 
-// All routes are in routes.js
+// All of our routes are in routes.js
 const routes = require("./routes");
 app.use("/", routes);
 
