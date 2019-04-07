@@ -92,11 +92,14 @@ router.get("/checkin", (req, res) => {
 });
 
 router.post("/checkin", (req, res) => {
-  const lateplate = LatePlate.findOne({'number': req.body.number});
   const returner = {
     name: req.body.name,
   };
-  return res.render('checkedin.hbs', {returner: returner, lateplate: lateplate});
+  LatePlate.findById(req.body.id, (err, lateplate) => {
+    lateplate.checkedOut = false;
+    lateplate.returners.push(returner);
+    return res.render('checkedin.hbs', {returner: returner, lateplate: lateplate});
+  });
 });
 
 module.exports = router;
