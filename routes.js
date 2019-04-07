@@ -26,10 +26,10 @@ router.get("/", (req, res) => {
   LatePlate.find().sort(sortObject).exec((err, array) => {
       array.forEach(item => {
         item.lenders.forEach(lender => {
-          lender.formattedDate = moment(item.date).format('dddd MMMM Do, YYYY');
+          lender.formattedDate = moment(lender.date).format('dddd MMMM Do, YYYY');
         })
         item.returners.forEach(returner => {
-          returner.formattedDate = moment(item.date).format('dddd MMMM Do, YYYY');
+          returner.formattedDate = moment(returner.date).format('dddd MMMM Do, YYYY');
         })
       })
       res.render('index', {items: array});
