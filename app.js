@@ -13,6 +13,11 @@ const app = express();
 
 // mongoose configuration
 
+if (!process.env.MONGODB_URI) {
+  throw new Error(
+    "MONGODB_URI is not in the environmental variables. Try running 'source env.sh'"
+  );
+}
 mongoose.connection.on("connected", _ =>
   console.log("Success: connected to MongoDb!")
 );
