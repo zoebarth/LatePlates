@@ -6,6 +6,7 @@ const router = express.Router();
 const LatePlate = require("./models").LatePlate;
 const strftime = require("strftime");
 const moment = require('moment-timezone');
+const bodyParser = require("body-parser");
 
 // Randomly generates a new lateplate
 router.get("/create-test-lateplate", (req, res) => {
