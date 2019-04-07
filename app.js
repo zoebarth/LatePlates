@@ -30,8 +30,22 @@ const app = express();
 // });
 // mongoose.connect(process.env.MONGODB_URI);
 
-const MONGODB_URI = "mongodb+srv://zoebarth:LatePlates@lateplates-yis5g.mongodb.net/test?retryWrites=true";
-mongoose.connect(MONGODB_URI);
+const {User} = require("./models");
+const mongoose = require("mongoose");
+
+console.log("mongoose stuff intialized");
+
+app.use((req, res, next) => {
+  console.log("use for mongoose callback");
+  if (mongoose.connection.readyState) {
+    console.log("if (mongoose.connection.readyState)");
+    next();
+  } else {
+    console.log("else (mongoose.connection.readyState)");
+    require("./mongo")().then(() => next());
+    console.log("else (mongoose.connection.readyState)");
+  }
+});
 
 // Handlabars setup
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
