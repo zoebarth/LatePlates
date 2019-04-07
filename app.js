@@ -13,21 +13,24 @@ const bodyParser = require("body-parser");
 const app = express();
 
 // mongoose configuration
-if (!fs.existsSync("./env.sh")) {
-  throw new Error("env.sh file is missing");
-}
-if (!process.env.MONGODB_URI) {
-  throw new Error(
-    "MONGODB_URI is not in the environmental variables. Try running 'source env.sh'"
-  );
-}
-mongoose.connection.on("connected", _ =>
-  console.log("Success: connected to MongoDb!")
-);
-mongoose.connection.on("error", _ => {
-  console.log("Error connecting to MongoDb. Check MONGODB_URI in env.sh");
-  process.exit(1);
-});
+// if (!fs.existsSync("./env.sh")) {
+//   throw new Error("env.sh file is missing");
+// }
+// if (!process.env.MONGODB_URI) {
+//   throw new Error(
+//     "MONGODB_URI is not in the environmental variables. Try running 'source env.sh'"
+//   );
+// }
+// mongoose.connection.on("connected", _ =>
+//   console.log("Success: connected to MongoDb!")
+// );
+// mongoose.connection.on("error", _ => {
+//   console.log("Error connecting to MongoDb. Check MONGODB_URI in env.sh");
+//   process.exit(1);
+// });
+// mongoose.connect(process.env.MONGODB_URI);
+
+const MONGODB_URI="mongodb+srv://zoebarth:LatePlates@lateplates-yis5g.mongodb.net/test?retryWrites=true";
 mongoose.connect(process.env.MONGODB_URI);
 
 // Handlabars setup
