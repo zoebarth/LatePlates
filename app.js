@@ -30,8 +30,8 @@ const app = express();
 // });
 // mongoose.connect(process.env.MONGODB_URI);
 
-const MONGODB_URI="mongodb+srv://zoebarth:LatePlates@lateplates-yis5g.mongodb.net/test?retryWrites=true";
-mongoose.connect(process.env.MONGODB_URI);
+const MONGODB_URI = "mongodb+srv://zoebarth:LatePlates@lateplates-yis5g.mongodb.net/test?retryWrites=true";
+mongoose.connect(MONGODB_URI);
 
 // Handlabars setup
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
