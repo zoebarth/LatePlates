@@ -16,10 +16,10 @@
       <tr>
         <td> <a href="/lateplate/{{this.id}}">{{this.number}}</a> </td>
         <td>{{this.status}}</td>
-        <td>{{this.lastLenderDate}}</td>
-        <td>{{this.lastLenderName}}</td>
-        <td></td>
-        <td> </td>
+        <td>{{this.lenders.0.formattedDate}}</td>
+        <td>{{this.lenders.0.name}}</td>
+        <td>{{this.returners.0.formattedDate}}</td>
+        <td>{{this.returners.0.name}}</td>
       </tr>
     {{/each}}
  </tbody>

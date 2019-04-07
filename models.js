@@ -31,9 +31,9 @@ const LatePlate = mongoose.model("LatePlate", {
     type: Number,
     required: true
   },
-  checkedOut: {
-    type: Boolean,
-    default: false
+  status: {
+    type: String,
+    default: "Available"
   },
   lenders: [lender],
   returners: [returner]

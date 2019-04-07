@@ -1,9 +1,19 @@
-<h1> Check Out Late Plate {{lateplate.number}} </h1>
-<form action="/checkout/{{lateplate.id}}" method="POST">
-  Name:<br>
-  <input type="text" name="name"> <br>
-  <br>
-  <input type="submit" class="btn btn-success" value="Submit">
-</form>
+<body style="background-color: #f1f4bb; font-family: Futura">
+  <div style="text-align: center">
+    <h1 style="font-size: 120px"> Check Out Late Plate {{lateplate.number}} </h1> <br>
+    <h5 style="font-size: 50px"> Please make sure to return late plate to bin by 5pm on Sunday. </h5> <br> <br> <br> <br>
+  </div>
 
-<h3> Current Status: {{status}} </h3>
+  <div>
+    <form action="/checkout/{{lateplate.id}}" method="POST">
+        <label style = "font-size: 50px"> Name:  <input type="text" name="name"> </label> <br> <br> <br> <br> <br>
+      <div style="text-align: center">
+        <input type="submit" class="btn btn-success" style = "font-size: 50px; padding: 25px" value="Submit!">
+      </div>
+    </form>
+
+    <div style="text-align: center; margin: 30px">
+      <h5 style="font-size: 50px"> Current Status: {{lateplate.status}} </h5>
+    </div>
+  </div>
+</body>

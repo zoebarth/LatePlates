@@ -1,8 +1,8 @@
 <a href="/">< View All Late Plates</a>
 <h1> Late Plate Number {{lateplate.number}} </h1>
-<h3> Current Status: {{status}} </h3>
-<h5> Last Checked Out By: {{lastLender}} </h5>
-<h5> Last Returned By:  </h5>
+<h3> Current Status: {{lateplate.status}} </h3>
+<li> Last Checked Out By: {{lateplate.lenders.0.name}} </li>
+<li> Last Returned By: {{lateplate.returners.0.name}} </li>
 
 
 <h3> Previosuly Checked Out By: </h3>
@@ -21,4 +21,22 @@
       </tr>
     {{/each}}
   </tbody>
-</ul>
+</table>
+
+<h3> Previosuly Returned By: </h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"> Name </th>
+      <th scope="col"> Date Checked In </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each lateplate.returners}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.formattedDate}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
